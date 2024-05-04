@@ -1,0 +1,9 @@
+{
+  "parent": "block/orientable_with_bottom",
+  "textures": {
+    "top": "stapitech:block/generator_top",
+    "front": "stapitech:block/generator_front",
+    "side": "stapitech:block/generator_side",
+    "bottom": "stapitech:block/generator_bottom"
+  }
+}

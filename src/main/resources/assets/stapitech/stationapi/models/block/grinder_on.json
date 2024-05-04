@@ -1,0 +1,7 @@
+{
+  "parent": "stapitech:block/grinder",
+  "textures": {
+    "up": "stapitech:block/grinder_top_on",
+    "north": "stapitech:block/grinder_front_on"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,on=false": {
+      "model": "stapitech:block/electric_furnace"
+    },
+    "facing=east,on=true": {
+      "model": "stapitech:block/electric_furnace_on"
+    },
+    "facing=south,on=false": {
+      "model": "stapitech:block/electric_furnace",
+      "y": 90
+    },
+    "facing=south,on=true": {
+      "model": "stapitech:block/electric_furnace_on",
+      "y": 90
+    },
+    "facing=west,on=false": {
+      "model": "stapitech:block/electric_furnace",
+      "y": 180
+    },
+    "facing=west,on=true": {
+      "model": "stapitech:block/electric_furnace_on",
+      "y": 180
+    },
+    "facing=north,on=false": {
+      "model": "stapitech:block/electric_furnace",
+      "y": 270
+    },
+    "facing=north,on=true": {
+      "model": "stapitech:block/electric_furnace_on",
+      "y": 270
+    }
+  }
+}

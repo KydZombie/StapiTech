@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "stapitech:block/grinder_side",
+    "up": "stapitech:block/grinder_top",
+    "north": "stapitech:block/grinder_front",
+    "south": "stapitech:block/machine_side",
+    "east": "stapitech:block/grinder_side",
+    "west": "stapitech:block/grinder_side",
+    "down": "stapitech:block/machine_bottom"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,on=false": {
+      "model": "stapitech:block/grinder"
+    },
+    "facing=east,on=true": {
+      "model": "stapitech:block/grinder_on"
+    },
+    "facing=south,on=false": {
+      "model": "stapitech:block/grinder",
+      "y": 90
+    },
+    "facing=south,on=true": {
+      "model": "stapitech:block/grinder_on",
+      "y": 90
+    },
+    "facing=west,on=false": {
+      "model": "stapitech:block/grinder",
+      "y": 180
+    },
+    "facing=west,on=true": {
+      "model": "stapitech:block/grinder_on",
+      "y": 180
+    },
+    "facing=north,on=false": {
+      "model": "stapitech:block/grinder",
+      "y": 270
+    },
+    "facing=north,on=true": {
+      "model": "stapitech:block/grinder_on",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "stapitech:block/generator",
+  "textures": {
+    "front": "stapitech:block/generator_front_on"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stapitech:block/generator"
+    },
+    "facing=south": {
+      "model": "stapitech:block/generator",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "stapitech:block/generator",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "stapitech:block/generator",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "stapitech:block/generator",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "stapitech:block/generator",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "block/orientable_with_bottom",
+  "textures": {
+    "top": "stapitech:block/machine_top",
+    "front": "stapitech:block/electric_furnace_front",
+    "side": "stapitech:block/machine_side",
+    "bottom": "stapitech:block/machine_bottom"
+  }
+}

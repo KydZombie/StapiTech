@@ -1,0 +1,6 @@
+{
+  "parent": "stapitech:block/electric_furnace",
+  "textures": {
+    "front": "stapitech:block/electric_furnace_front_on"
+  }
+}

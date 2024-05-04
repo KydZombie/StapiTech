@@ -1,41 +1,37 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "stapitech",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "StapiTech",
+  "description": "StationAPI tech mod similar to what stapi-test was meant to be.",
   "authors": [
-    "Me!"
+    "KydZombie"
   ],
   "contact": {
-    "homepage": "https://glass-launcher.net/",
-    "sources": "https://github.com/calmilamsy/stationapi-example-mod"
+    "homepage": "https://github.com/KydZombie/StapiTech",
+    "sources": "https://github.com/KydZombie/StapiTech",
+    "issues": "https://github.com/KydZombie/StapiTech/issues"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/examplemod/icon.png",
+  "icon": "assets/stapitech/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.glasslauncher.example.events.init.AchievementListener",
-      "net.glasslauncher.example.events.init.BlockListener",
-      "net.glasslauncher.example.events.init.ItemListener",
-      "net.glasslauncher.example.events.init.PlayerHandlerListener",
-      "net.glasslauncher.example.events.init.RecipeListener"
+      "io.github.kydzombie.stapitech.StapiTech",
+      "io.github.kydzombie.stapitech.event.init.StapiTechBlocks",
+      "io.github.kydzombie.stapitech.event.init.StapiTechRecipes"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.example.events.init.KeyBindingListener",
-      "net.glasslauncher.example.events.init.TextureListener",
-      "net.glasslauncher.example.events.ingame.KeyPressedListener"
+      "io.github.kydzombie.stapitech.event.init.client.StapiTechGui"
     ],
     "stationapi:event_bus_server": [
-      "net.glasslauncher.example.events.init.ServerInitListener"
     ]
   },
   "mixins": [
-    "examplemod.mixins.json"
+    "stapitech.mixins.json"
   ],
 
   "depends": {
