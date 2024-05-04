@@ -13,6 +13,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -20,10 +22,11 @@ public class GeneratorBlockEntity extends BlockEntity implements SimpleInventory
     @Getter @Setter private ItemStack[] inventory = new ItemStack[2];
     @Getter @Setter private int energy = 0;
 
+    private static final int BASE_FUEL_CHARGE_PER_TICK = 10;
     private static final int MAX_AMOUNT_SENT_PER_TICK = 100;
     private static final int MAX_AMOUNT_SENT_PER_TICK_PER_MACHINE = 20;
 
-    @Getter List<EnergyConnection> energyConnections;
+    EnumMap<Direction, List<EnergyConnection>> energyConnections;
     private boolean connectionsDirty = true;
 
     public int burnTime = 0;
@@ -80,7 +83,7 @@ public class GeneratorBlockEntity extends BlockEntity implements SimpleInventory
         if (world.isRemote) return;
 
         if (burnTime > 0) {
-            chargeEnergy(10);
+            chargeEnergy(BASE_FUEL_CHARGE_PER_TICK);
             burnTime--;
         } else if (getEnergy() != getMaxEnergy()) {
             fuelTime = FuelRegistry.getFuelTime(inventory[0]);
@@ -99,26 +102,38 @@ public class GeneratorBlockEntity extends BlockEntity implements SimpleInventory
         }
 
         if (energyConnections == null || connectionsDirty) {
-            energyConnections = EnergyUtils.findUniqueMachineConnections(world, x, y, z, EnumSet.of(EnergyConnectionType.INPUT));
+            var directions = new ArrayList<>(List.of(Direction.values()));
+            var state = world.getBlockState(x, y, z);
+            directions.remove(state.get(OrientableMachineBlock.FACING_PROPERTY));
+            energyConnections = EnergyUtils.findUniqueMachineConnections(
+                    world,
+                    x,
+                    y,
+                    z,
+                    directions.toArray(Direction[]::new),
+                    EnumSet.of(EnergyConnectionType.INPUT)
+            );
             connectionsDirty = false;
         }
 
         var sent = 0;
 
-        for (EnergyConnection connection : energyConnections) {
-            var machine = connection.machine();
-            sent += sendEnergyToSide(
-                    machine,
-                    connection.side(),
-                    Math.min(
-                            energy,
-                            Math.min(
-                                    MAX_AMOUNT_SENT_PER_TICK_PER_MACHINE,
-                                    MAX_AMOUNT_SENT_PER_TICK - sent
-                            )
-                    )
-            );
-            if (sent >= MAX_AMOUNT_SENT_PER_TICK) break;
+        for (var direction : energyConnections.keySet()) {
+            for (EnergyConnection connection : energyConnections.get(direction)) {
+                var machine = connection.machine();
+                sent += sendEnergyToSide(
+                        machine,
+                        connection.side(),
+                        Math.min(
+                                energy,
+                                Math.min(
+                                        MAX_AMOUNT_SENT_PER_TICK_PER_MACHINE,
+                                        MAX_AMOUNT_SENT_PER_TICK - sent
+                                )
+                        )
+                );
+                if (sent >= MAX_AMOUNT_SENT_PER_TICK) return;
+            }
         }
     }
 

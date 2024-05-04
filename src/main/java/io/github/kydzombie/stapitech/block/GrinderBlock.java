@@ -3,6 +3,7 @@ package io.github.kydzombie.stapitech.block;
 import io.github.kydzombie.stapitech.StapiTech;
 import io.github.kydzombie.stapitech.block.entity.GrinderBlockEntity;
 import io.github.kydzombie.stapitech.gui.screen.GrinderScreenHandler;
+import net.danygames2014.uniwrench.item.WrenchBase;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,6 +25,9 @@ public class GrinderBlock extends OrientableMachineBlock {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        if (player.getHand() != null && player.getHand().getItem() instanceof WrenchBase) {
+            return super.onUse(world, x, y, z, player);
+        }
         var blockEntity = (GrinderBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
                 player,

@@ -2,4 +2,6 @@ tile.@.generator.name=Generator
 tile.@.electric_furnace.name=Electric Furnace
 tile.@.grinder.name=Grinder
 
+tile.@.battery_block.name=Battery Block
+
 tile.@.energy_cable.name=Energy Cable

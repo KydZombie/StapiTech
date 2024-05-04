@@ -1,14 +1,14 @@
 package io.github.kydzombie.stapitech.gui.screen;
 
-import io.github.kydzombie.stapitech.block.entity.GeneratorBlockEntity;
+import io.github.kydzombie.stapitech.block.entity.BatteryBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class GeneratorScreenHandler extends ScreenHandler {
-    private final GeneratorBlockEntity blockEntity;
+public class BatteryBlockScreenHandler extends ScreenHandler {
+    private final BatteryBlockEntity blockEntity;
 
-    public GeneratorScreenHandler(PlayerEntity player, GeneratorBlockEntity blockEntity) {
+    public BatteryBlockScreenHandler(PlayerEntity player, BatteryBlockEntity blockEntity) {
         this.blockEntity = blockEntity;
 
         addSlot(new Slot(blockEntity, 0, 80, 53));

@@ -3,6 +3,7 @@
     "stapitech:generator",
     "stapitech:electric_furnace",
     "stapitech:grinder",
+    "stapitech:battery_block",
     "stapitech:energy_cable"
   ]
 }

@@ -22,7 +22,8 @@
     "stationapi:event_bus": [
       "io.github.kydzombie.stapitech.StapiTech",
       "io.github.kydzombie.stapitech.event.init.StapiTechBlocks",
-      "io.github.kydzombie.stapitech.event.init.StapiTechRecipes"
+      "io.github.kydzombie.stapitech.event.init.StapiTechRecipes",
+      "io.github.kydzombie.stapitech.event.init.StapiTechCompat"
     ],
     "stationapi:event_bus_client": [
       "io.github.kydzombie.stapitech.event.init.client.StapiTechGui"

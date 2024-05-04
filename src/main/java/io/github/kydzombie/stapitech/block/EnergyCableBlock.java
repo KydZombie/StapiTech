@@ -160,13 +160,13 @@ public class EnergyCableBlock extends TemplateBlock implements HasEnergyIO {
 
     @Override
     public void onBreak(World world, int x, int y, int z) {
-        EnergyUtils.notifyRelevantListeners(world, x, y, z);
+        EnergyUtils.notifyRelevantConnections(world, x, y, z);
         super.onBreak(world, x, y, z);
     }
 
     @Override
     public void onPlaced(World world, int x, int y, int z) {
-        EnergyUtils.notifyRelevantListeners(world, x, y, z);
+        EnergyUtils.notifyRelevantConnections(world, x, y, z);
         super.onPlaced(world, x, y, z);
     }
 }

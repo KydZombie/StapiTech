@@ -1,0 +1,8 @@
+{
+  "parent": "block/legacy/cube_bottom_top",
+  "textures": {
+    "top": "stapitech:block/battery_top",
+    "bottom": "stapitech:block/battery_bottom",
+    "side": "stapitech:block/battery_side"
+  }
+}

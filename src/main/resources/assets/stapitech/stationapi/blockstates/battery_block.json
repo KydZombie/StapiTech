@@ -1,0 +1,168 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "stapitech:block/battery_block"
+      }
+    },
+    {
+      "when": {
+        "connection_east": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input"
+      }
+    },
+    {
+      "when": {
+        "connection_east": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output"
+      }
+    },
+    {
+      "when": {
+        "connection_east": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed"
+      }
+    },
+    {
+      "when": {
+        "connection_south": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "connection_south": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "connection_south": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "connection_west": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "connection_west": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "connection_west": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "connection_north": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "connection_north": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "connection_north": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "connection_up": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "connection_up": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "connection_up": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "connection_down": "input"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_input",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "connection_down": "output"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_output",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "connection_down": "mixed"
+      },
+      "apply": {
+        "model": "stapitech:block/battery_block_mixed",
+        "x": 90
+      }
+    }
+  ]
+}

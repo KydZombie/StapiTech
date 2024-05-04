@@ -1,10 +1,8 @@
 package io.github.kydzombie.stapitech.event.init;
 
 import io.github.kydzombie.stapitech.StapiTech;
-import io.github.kydzombie.stapitech.block.ElectricFurnaceBlock;
-import io.github.kydzombie.stapitech.block.EnergyCableBlock;
-import io.github.kydzombie.stapitech.block.GeneratorBlock;
-import io.github.kydzombie.stapitech.block.GrinderBlock;
+import io.github.kydzombie.stapitech.block.*;
+import io.github.kydzombie.stapitech.block.entity.BatteryBlockEntity;
 import io.github.kydzombie.stapitech.block.entity.ElectricFurnaceBlockEntity;
 import io.github.kydzombie.stapitech.block.entity.GeneratorBlockEntity;
 import io.github.kydzombie.stapitech.block.entity.GrinderBlockEntity;
@@ -18,6 +16,8 @@ public class StapiTechBlocks {
     public static ElectricFurnaceBlock electricFurnace;
     public static GrinderBlock grinder;
 
+    public static BatteryBlock batteryBlock;
+
     public static EnergyCableBlock energyCable;
 
     @EventListener
@@ -26,6 +26,8 @@ public class StapiTechBlocks {
         generator = new GeneratorBlock(StapiTech.NAMESPACE.id("generator"), Material.METAL);
         electricFurnace = new ElectricFurnaceBlock(StapiTech.NAMESPACE.id("electric_furnace"), Material.METAL);
         grinder = new GrinderBlock(StapiTech.NAMESPACE.id("grinder"), Material.METAL);
+
+        batteryBlock = new BatteryBlock(StapiTech.NAMESPACE.id("battery_block"), Material.METAL);
 
         energyCable = new EnergyCableBlock(StapiTech.NAMESPACE.id("energy_cable"), Material.METAL);
     }
@@ -36,5 +38,6 @@ public class StapiTechBlocks {
         event.register(GeneratorBlockEntity.class, StapiTech.NAMESPACE.id("generator").toString());
         event.register(ElectricFurnaceBlockEntity.class, StapiTech.NAMESPACE.id("electric_furnace").toString());
         event.register(GrinderBlockEntity.class, StapiTech.NAMESPACE.id("grinder").toString());
+        event.register(BatteryBlockEntity.class, StapiTech.NAMESPACE.id("battery_block").toString());
     }
 }

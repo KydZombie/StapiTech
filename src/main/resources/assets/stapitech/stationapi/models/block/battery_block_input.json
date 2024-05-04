@@ -1,0 +1,16 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "0": "stapitech:block/battery_input",
+    "particle": "stapitech:block/battery_input"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#0"}
+      }
+    }
+  ]
+}

@@ -89,6 +89,11 @@ dependencies {
 		transitive false
 	}
 
+	// UniWrench
+	modImplementation("com.github.DanyGames2014:UniWrench:${project.uniwrench_version}") {
+		transitive false
+	}
+
 	// Lombok
 	compileOnly 'org.projectlombok:lombok:1.18.32'
 	annotationProcessor 'org.projectlombok:lombok:1.18.32'

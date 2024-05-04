@@ -53,7 +53,7 @@ abstract public class MachineBlock extends TemplateBlockWithEntity {
 
         var blockEntity = world.getBlockEntity(x, y, z);
         if (blockEntity instanceof HasEnergyIO) {
-            EnergyUtils.notifyRelevantListeners(world, x, y, z);
+            EnergyUtils.notifyRelevantConnections(world, x, y, z);
         }
     }
 
@@ -91,7 +91,7 @@ abstract public class MachineBlock extends TemplateBlockWithEntity {
             }
         }
         if (blockEntity instanceof HasEnergyIO) {
-            EnergyUtils.notifyRelevantListeners(world, x, y, z);
+            EnergyUtils.notifyRelevantConnections(world, x, y, z);
         }
         super.onBreak(world, x, y, z);
     }
