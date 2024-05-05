@@ -18,7 +18,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import java.util.Random;
 
 abstract public class MachineBlock extends TemplateBlockWithEntity {
-    private static boolean BEING_REPLACED = false;
+    protected static boolean BEING_REPLACED = false;
     public static final BooleanProperty ON_PROPERTY = BooleanProperty.of("on");
     private static final Random random = new Random();
 
@@ -37,11 +37,16 @@ abstract public class MachineBlock extends TemplateBlockWithEntity {
         var curr = world.getBlockState(x, y, z);
         if (curr.get(ON_PROPERTY) != on) {
             var blockEntity = world.getBlockEntity(x, y, z);
+//            if (blockEntity == null) return;
             BEING_REPLACED = true;
+
             StapiTech.LOGGER.info("Would have turned {} ({}, {}, {}) {}.",
                     blockEntity.getClass().getName(), x, y, z, on ? "on" : "off");
-//            world.setBlockStateWithNotify(x, y, z, curr.with(ON_PROPERTY, on));
-//            world.method_157(x, y, z, blockEntity);
+
+            world.setBlockStateWithNotify(x, y, z, curr.with(ON_PROPERTY, on));
+            blockEntity.cancelRemoval();
+            world.method_157(x, y, z, blockEntity);
+
             BEING_REPLACED = false;
         }
     }
@@ -60,7 +65,7 @@ abstract public class MachineBlock extends TemplateBlockWithEntity {
     @Override
     public void onBreak(World world, int x, int y, int z) {
         if (BEING_REPLACED) {
-            super.onBreak(world, x, y, z);
+//            super.onBreak(world, x, y, z);
             return;
         }
 

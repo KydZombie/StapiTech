@@ -1,13 +1,21 @@
 package io.github.kydzombie.stapitech.gui.screen;
 
 import io.github.kydzombie.stapitech.block.entity.GrinderBlockEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.class_633;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.FurnaceOutputSlot;
 import net.minecraft.screen.slot.Slot;
 
+import java.util.List;
+
 public class GrinderScreenHandler extends ScreenHandler {
     private final GrinderBlockEntity blockEntity;
+
+    private int cachedCookTime = 0;
+    private int cachedEnergy = 0;
 
     public GrinderScreenHandler(PlayerEntity player, GrinderBlockEntity blockEntity) {
         this.blockEntity = blockEntity;
@@ -24,6 +32,44 @@ public class GrinderScreenHandler extends ScreenHandler {
 
         for(i = 0; i < 9; ++i) {
             addSlot(new Slot(player.inventory, i, 8 + i * 18, 142));
+        }
+    }
+
+    @Override
+    public void addListener(class_633 listener) {
+        super.addListener(listener);
+        listener.method_2099(this, 0, blockEntity.cookTime);
+        listener.method_2099(this, 1, blockEntity.getEnergy());
+    }
+
+    @Override
+    public void method_2075() {
+        super.method_2075();
+
+        for (var listener : (List<class_633>) listeners) {
+            if (cachedCookTime != blockEntity.cookTime) {
+                listener.method_2099(this, 0, blockEntity.cookTime);
+            }
+
+            if (cachedEnergy != blockEntity.getEnergy()) {
+                listener.method_2099(this, 1, blockEntity.getEnergy());
+            }
+        }
+
+        cachedCookTime = blockEntity.cookTime;
+        cachedEnergy = blockEntity.getEnergy();
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void method_2077(int id, int val) {
+        switch (id) {
+            case 0:
+                blockEntity.cookTime = val;
+                break;
+            case 1:
+                blockEntity.setEnergy(val);
+                break;
         }
     }
 

@@ -80,7 +80,6 @@ public class BatteryBlock extends TemplateBlockWithEntity implements Wrenchable 
     @Override
     public void onBreak(World world, int x, int y, int z) {
         if (BEING_REPLACED) {
-            super.onBreak(world, x, y, z);
             return;
         }
         super.onBreak(world, x, y, z);
@@ -108,7 +107,12 @@ public class BatteryBlock extends TemplateBlockWithEntity implements Wrenchable 
         var state = world.getBlockState(x, y, z);
         var stateSide = DIRECTION_PROPERTIES.get(Direction.values()[side]);
         var value = isSneaking ? state.get(stateSide).getNext() : state.get(stateSide).getPrevious();
+
+        var blockEntity = world.getBlockEntity(x, y, z);
         world.setBlockStateWithNotify(x, y, z, state.with(stateSide, value));
+        blockEntity.cancelRemoval();
+        world.method_157(x, y, z, blockEntity);
+
         EnergyUtils.notifyRelevantConnections(world, x, y, z);
     }
 

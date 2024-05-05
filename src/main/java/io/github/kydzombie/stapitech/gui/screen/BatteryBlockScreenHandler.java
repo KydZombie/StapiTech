@@ -1,12 +1,19 @@
 package io.github.kydzombie.stapitech.gui.screen;
 
 import io.github.kydzombie.stapitech.block.entity.BatteryBlockEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.class_633;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
+import java.util.List;
+
 public class BatteryBlockScreenHandler extends ScreenHandler {
     private final BatteryBlockEntity blockEntity;
+
+    private int cachedEnergy = 0;
 
     public BatteryBlockScreenHandler(PlayerEntity player, BatteryBlockEntity blockEntity) {
         this.blockEntity = blockEntity;
@@ -23,6 +30,35 @@ public class BatteryBlockScreenHandler extends ScreenHandler {
 
         for(i = 0; i < 9; ++i) {
             addSlot(new Slot(player.inventory, i, 8 + i * 18, 142));
+        }
+    }
+
+    @Override
+    public void addListener(class_633 listener) {
+        super.addListener(listener);
+        listener.method_2099(this, 0, blockEntity.getEnergy());
+    }
+
+    @Override
+    public void method_2075() {
+        super.method_2075();
+
+        for (var listener : (List<class_633>) listeners) {
+            if (cachedEnergy != blockEntity.getEnergy()) {
+                listener.method_2099(this, 0, blockEntity.getEnergy());
+            }
+        }
+
+        cachedEnergy = blockEntity.getEnergy();
+    }
+
+    @Environment(EnvType.CLIENT)
+    @Override
+    public void method_2077(int id, int val) {
+        switch (id) {
+            case 0:
+                blockEntity.setEnergy(val);
+                break;
         }
     }
 

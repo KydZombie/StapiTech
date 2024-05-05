@@ -1,5 +1,6 @@
 package io.github.kydzombie.stapitech.block;
 
+import io.github.kydzombie.stapitech.StapiTech;
 import io.github.kydzombie.stapitech.api.energy.EnergyUtils;
 import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.api.Wrenchable;
@@ -37,7 +38,15 @@ abstract public class OrientableMachineBlock extends MachineBlock implements Wre
     @Override
     public void wrenchRightClick(ItemStack stack, PlayerEntity player, boolean isSneaking, World world, int x, int y, int z, int side, WrenchMode wrenchMode) {
         if (wrenchMode != WrenchMode.MODE_ROTATE || side == 0 || side == 1) return;
+        BEING_REPLACED = true;
+
+        var blockEntity = world.getBlockEntity(x, y, z);
         world.setBlockStateWithNotify(x, y, z, world.getBlockState(x, y, z).with(FACING_PROPERTY, Direction.values()[side]));
+        blockEntity.cancelRemoval();
+        world.method_157(x, y, z, blockEntity);
+
+        BEING_REPLACED = false;
+
         EnergyUtils.notifyRelevantConnections(world, x, y, z);
     }
 }

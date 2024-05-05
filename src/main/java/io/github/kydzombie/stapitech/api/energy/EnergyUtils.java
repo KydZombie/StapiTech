@@ -86,20 +86,6 @@ public class EnergyUtils {
         return map;
     }
 
-//    public static List<EnergyConnection> getAdjacentMachines(World world, int x, int y, int z, EnumSet<EnergyConnectionType> connectionTypes) {
-//        var connections = new ArrayList<EnergyConnection>();
-//
-//        for (var direction : Direction.values()) {
-//            var check = DirectionalBlockPos.getFromDirection(x, y, z, direction);
-//            if (world.getBlockEntity(check.x, check.y, check.z) instanceof HasEnergyIO machine &&
-//                    !Collections.disjoint(machine.getConnectionType(direction.getOpposite()),connectionTypes)) {
-//                connections.add(new EnergyConnection(machine, direction.getOpposite()));
-//            }
-//        }
-//
-//        return connections;
-//    }
-
     private record DirectionalBlockPos(int x, int y, int z, Direction side) {
         private static DirectionalBlockPos getFromDirection(int x, int y, int z, Direction direction) {
             return new DirectionalBlockPos(
